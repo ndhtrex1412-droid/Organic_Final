@@ -1,0 +1,103 @@
+{
+  "theme": "light",
+  "archetype": "1_organic_and_earthy",
+  "design_philosophy": "Fresh, natural, and grounded. The dashboard should feel like a modern, clean command center for organic produce, emphasizing clarity and health. We avoid stark, clinical white and instead use warm, tinted off-whites paired with deep forest greens and muted sage tones.",
+  "colors": {
+    "background": "#F8F9F6",
+    "surface": "#FFFFFF",
+    "primary": "#2C5F2D",
+    "primary_hover": "#1E441F",
+    "secondary": "#97BC62",
+    "secondary_hover": "#82A74F",
+    "text_primary": "#1A2118",
+    "text_secondary": "#5C6656",
+    "border": "#E3E8E0",
+    "success": "#3A7D44",
+    "warning": "#D68C45",
+    "destructive": "#C15C5C",
+    "ring": "#97BC62"
+  },
+  "typography": {
+    "fonts": {
+      "headings": "Work Sans, sans-serif",
+      "body": "Manrope, sans-serif",
+      "mono": "IBM Plex Mono, monospace"
+    },
+    "hierarchy": {
+      "h1": "text-4xl tracking-tight font-semibold text-[#1A2118]",
+      "h2": "text-2xl tracking-tight font-medium text-[#1A2118]",
+      "h3": "text-xl font-medium text-[#1A2118]",
+      "h4": "text-lg font-medium text-[#1A2118]",
+      "body": "text-base leading-relaxed text-[#5C6656]",
+      "small": "text-sm text-[#5C6656]",
+      "label": "text-xs font-semibold uppercase tracking-[0.05em] text-[#5C6656]"
+    }
+  },
+  "spacing_and_layout": {
+    "container_padding": "p-6 md:p-8 lg:p-12",
+    "gap_primary": "gap-6",
+    "gap_secondary": "gap-4",
+    "radius_base": "rounded-xl",
+    "radius_large": "rounded-2xl",
+    "radius_full": "rounded-full"
+  },
+  "surface_strategies": {
+    "cards": "bg-[#FFFFFF] border border-[#E3E8E0] rounded-xl shadow-none transition-all duration-200 hover:border-[#97BC62] hover:shadow-sm",
+    "headers": "bg-white/80 backdrop-blur-xl border-b border-[#E3E8E0] sticky top-0 z-50",
+    "inputs": "bg-[#F8F9F6] border border-[#E3E8E0] rounded-lg focus:ring-2 focus:ring-[#97BC62] focus:border-transparent transition-all",
+    "buttons_primary": "bg-[#2C5F2D] text-white rounded-lg hover:bg-[#1E441F] active:scale-[0.98] transition-all font-medium",
+    "buttons_secondary": "bg-[#F8F9F6] text-[#2C5F2D] border border-[#E3E8E0] rounded-lg hover:bg-[#E3E8E0] transition-all font-medium"
+  },
+  "media": {
+    "images": {
+      "logo": {
+        "url": "https://images.unsplash.com/photo-1587334274328-64186a80aeee?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxvcmdhbmljJTIwZm9vZCUyMHN0b3JlJTIwbG9nbyUyMGdyZWVuJTIwbGVhZnxlbnwwfHx8fDE3NzU0MzExMTJ8MA&ixlib=rb-4.1.0&q=85",
+        "alt": "Organic Food Store Leaf Logo",
+        "usage": "Use in the login screen and dashboard sidebar header."
+      },
+      "login_background": {
+        "url": "https://images.unsplash.com/photo-1760865245986-2d863b76a847?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG9yZ2FuaWMlMjBncmVlbiUyMGJsdXIlMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NTQzMTExN3ww&ixlib=rb-4.1.0&q=85",
+        "alt": "Abstract organic green blur",
+        "usage": "Use as a full-screen, subtle background image for the Admin Login page (opacity reduced or overlaid with a semi-transparent layer)."
+      },
+      "ai_bot_avatar": {
+        "url": "https://images.pexels.com/photos/13567645/pexels-photo-13567645.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Minimalist green leaf",
+        "usage": "Use as the avatar for the AI Nutrition Chatbot."
+      },
+      "product_placeholder_1": {
+        "url": "https://images.unsplash.com/flagged/photo-1579410137879-fb3835b4f2eb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwzfHxvcmdhbmljJTIwdmVnZXRhYmxlcyUyMGdyb2NlcmllcyUyMG9uJTIwd2hpdGUlMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NTQzMTExMnww&ixlib=rb-4.1.0&q=85",
+        "alt": "Organic Tomato",
+        "usage": "Default or seed image for product 1"
+      },
+      "product_placeholder_2": {
+        "url": "https://images.unsplash.com/flagged/photo-1579410137904-03cda8069b07?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwyfHxvcmdhbmljJTIwdmVnZXRhYmxlcyUyMGdyb2NlcmllcyUyMG9uJTIwd2hpdGUlMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NTQzMTExMnww&ixlib=rb-4.1.0&q=85",
+        "alt": "Organic Cucumber",
+        "usage": "Default or seed image for product 2"
+      }
+    }
+  },
+  "components": {
+    "table": "Use Shadcn Table. Apply white background, subtle rounded corners, and border `#E3E8E0`. Table headers should use the 'label' typography style. Rows hover should have a very soft green tint (`hover:bg-[#F8F9F6]`).",
+    "forms": "Use Shadcn Form primitives. Inputs should be spacious (h-11). Labels should be clear and descriptive. Add 'Image Upload' area with a dashed border and an upload icon.",
+    "sidebar": "Fixed left sidebar. Background `#F8F9F6`, border-r `#E3E8E0`. Active link background should be `#E3E8E0` with text `#2C5F2D`. Inactive links text `#5C6656`. Include a prominent logout button.",
+    "ai_chatbot": "A chat interface accessible via a main dashboard tab or floating button. Use a clean, message-bubble layout. AI messages: bg-[#F8F9F6], User messages: bg-[#2C5F2D] text-white."
+  },
+  "animation": {
+    "hover": "transition-all duration-200 ease-in-out",
+    "page_transition": "animate-in fade-in slide-in-from-bottom-2 duration-300",
+    "dialog": "animate-in zoom-in-95 duration-200"
+  },
+  "testing": {
+    "data_testid_rules": "All interactive elements (buttons, inputs, links, table rows, edit/delete actions) must have a kebab-case data-testid attribute describing their role (e.g., `data-testid=\"login-submit-button\"`, `data-testid=\"add-product-button\"`)."
+  },
+  "instructions_to_main_agent": [
+    "Build an Admin Login page using 'login_background' as the backdrop. Hardcode credentials: admin68 / password123 as requested.",
+    "Create a protected layout with a Sidebar navigation (Products, AI Nutrition Chat).",
+    "Implement the Advanced Product CRUD dashboard. Fields exactly as requested: ProductID, ProductName, PathImage, ProductType, Quantity, Unit, Price, Description, CreateDate, UpdateDate.",
+    "Use Shadcn UI for the Table, Dialogs (Add/Edit), Forms, and Dropdowns. Ensure the theme colors from this JSON are applied via Tailwind classes.",
+    "Integrate the AI Nutrition Chatbot interface using the 'ai_bot_avatar'. Use Gemini 3 Flash as the AI provider for generating nutrition info.",
+    "Ensure all fonts (Work Sans, Manrope) are loaded properly (e.g. from Google Fonts in index.html or layout).",
+    "Apply `data-testid` attributes to all actionable elements for reliable testing."
+  ]
+}

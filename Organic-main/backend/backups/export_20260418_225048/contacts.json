@@ -1,0 +1,38 @@
+[
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7028"
+    },
+    "full_name": "Phạm Văn Đức",
+    "email": "duc@gmail.com",
+    "phone": "0911222333",
+    "subject": "Hỏi về chứng nhận VietGAP",
+    "message": "Chào shop, cho tôi hỏi sản phẩm rau muống có giấy chứng nhận VietGAP không?",
+    "status": "new",
+    "created_at": "2026-04-18T22:40:14.762319+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7029"
+    },
+    "full_name": "Hoàng Thị Mai",
+    "email": "mai@gmail.com",
+    "phone": "0944555666",
+    "subject": "Góp ý dịch vụ giao hàng",
+    "message": "Giao hàng đúng hẹn, đóng gói cẩn thận, rất hài lòng!",
+    "status": "new",
+    "created_at": "2026-04-18T21:40:14.762328+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a702a"
+    },
+    "full_name": "Võ Văn Khánh",
+    "email": "khanh@gmail.com",
+    "phone": "0977888999",
+    "subject": "Yêu cầu mua sỉ",
+    "message": "Tôi muốn mua 100kg gạo ST25 cho nhà hàng, xin báo giá sỉ.",
+    "status": "new",
+    "created_at": "2026-04-18T20:40:14.762332+00:00"
+  }
+]

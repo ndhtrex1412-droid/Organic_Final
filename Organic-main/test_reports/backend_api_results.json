@@ -1,0 +1,58 @@
+{
+  "summary": {
+    "total_tests": 8,
+    "passed_tests": 6,
+    "success_rate": "75.0%",
+    "timestamp": "2026-04-05T23:26:01.288509"
+  },
+  "detailed_results": [
+    {
+      "test": "Admin Login",
+      "success": true,
+      "details": "Status: 200, Expected: 200",
+      "timestamp": "2026-04-05T23:25:57.399635"
+    },
+    {
+      "test": "Invalid Login",
+      "success": true,
+      "details": "Status: 401, Expected: 401",
+      "timestamp": "2026-04-05T23:25:57.549041"
+    },
+    {
+      "test": "Auth Verify",
+      "success": true,
+      "details": "Status: 200, Expected: 200",
+      "timestamp": "2026-04-05T23:25:57.654342"
+    },
+    {
+      "test": "Get Products",
+      "success": true,
+      "details": "Status: 200, Expected: 200",
+      "timestamp": "2026-04-05T23:25:57.768471"
+    },
+    {
+      "test": "Create Product",
+      "success": false,
+      "details": "Status: 200, Expected: 201, Response: {'ProductID': '512be3a9-1046-44d5-b19c-ceab9963268f', 'ProductName': 'Test Organic Apples', 'PathImage': 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6', 'ProductType': 'Fruits', 'Quantity': 25.5, 'Unit': 'kg', 'Price': 5.99, 'Description': 'Fresh organic apples for testing', 'CreateDate': '2026-04-05T23:25:57.876691+00:00', 'UpdateDate': '2026-04-05T23:25:57.876700+00:00'}",
+      "timestamp": "2026-04-05T23:25:57.894648"
+    },
+    {
+      "test": "Get Non-existent Product",
+      "success": true,
+      "details": "Status: 404, Expected: 404",
+      "timestamp": "2026-04-05T23:25:58.011149"
+    },
+    {
+      "test": "AI Chat",
+      "success": true,
+      "details": "Status: 200, Expected: 200",
+      "timestamp": "2026-04-05T23:26:01.155622"
+    },
+    {
+      "test": "Unauthorized Products Access",
+      "success": false,
+      "details": "Status: 403, Expected: 401, Response: {'detail': 'Not authenticated'}",
+      "timestamp": "2026-04-05T23:26:01.287637"
+    }
+  ]
+}

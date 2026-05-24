@@ -1,0 +1,257 @@
+[
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a700f"
+    },
+    "ProductName": "Gạo ST25 hữu cơ",
+    "PathImage": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+    "ProductType": "Ngũ cốc",
+    "Quantity": 500,
+    "Unit": "kg",
+    "Price": 85000,
+    "Description": "Gạo ST25 hữu cơ đạt chuẩn VietGAP, giống gạo ngon nhất thế giới 2019.",
+    "Origin": "Sóc Trăng, Việt Nam",
+    "Certification": "VietGAP, USDA Organic",
+    "ProductID": "36e1d9c7-4378-4478-950f-733f3599af08",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7010"
+    },
+    "ProductName": "Thanh long Bình Thuận",
+    "PathImage": "https://images.unsplash.com/photo-1527325678964-54921661f888?w=400",
+    "ProductType": "Trái cây",
+    "Quantity": 200,
+    "Unit": "kg",
+    "Price": 45000,
+    "Description": "Thanh long ruột đỏ hữu cơ, giàu vitamin C và chất xơ.",
+    "Origin": "Bình Thuận, Việt Nam",
+    "Certification": "VietGAP",
+    "ProductID": "e574b457-9347-4cfd-adad-505fabf083d5",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7011"
+    },
+    "ProductName": "Cà phê Đắk Lắk hữu cơ",
+    "PathImage": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400",
+    "ProductType": "Đồ uống",
+    "Quantity": 150,
+    "Unit": "kg",
+    "Price": 350000,
+    "Description": "Cà phê Arabica hữu cơ từ cao nguyên Đắk Lắk.",
+    "Origin": "Đắk Lắk, Việt Nam",
+    "Certification": "USDA Organic, Rainforest Alliance",
+    "ProductID": "2d8e6d29-c44a-4f14-8234-26370be8ced0",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7012"
+    },
+    "ProductName": "Măng cụt Lái Thiêu",
+    "PathImage": "data:image/jpeg;base64,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",
+    "ProductType": "Trái cây",
+    "Quantity": 100.0,
+    "Unit": "kg",
+    "Price": 120000.0,
+    "Description": "Măng cụt đặc sản Lái Thiêu, ngọt thanh, giàu chất chống oxy hóa.",
+    "Origin": "Bình Dương, Việt Nam",
+    "Certification": "VietGAP",
+    "ProductID": "82b81744-54ab-4f31-a840-f47be285faae",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:45:33.965383+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7013"
+    },
+    "ProductName": "Rau muống hữu cơ",
+    "PathImage": "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400",
+    "ProductType": "Rau củ",
+    "Quantity": 80,
+    "Unit": "kg",
+    "Price": 25000,
+    "Description": "Rau muống hữu cơ tươi ngon, đạt chuẩn TCVN 11041:2015.",
+    "Origin": "Đà Lạt, Việt Nam",
+    "Certification": "TCVN 11041:2015, VietGAP",
+    "ProductID": "0ac38b9d-439c-49a5-849e-3c8622d447a5",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7014"
+    },
+    "ProductName": "Cải bó xôi hữu cơ",
+    "PathImage": "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400",
+    "ProductType": "Rau củ",
+    "Quantity": 60,
+    "Unit": "kg",
+    "Price": 35000,
+    "Description": "Cải bó xôi (rau chân vịt) trồng thuỷ canh hữu cơ, giàu sắt.",
+    "Origin": "Lâm Đồng, Việt Nam",
+    "Certification": "VietGAP",
+    "ProductID": "5e827fb0-940a-41ad-b21e-3a78942ff581",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7015"
+    },
+    "ProductName": "Cà chua bi hữu cơ",
+    "PathImage": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400",
+    "ProductType": "Rau củ",
+    "Quantity": 120,
+    "Unit": "kg",
+    "Price": 40000,
+    "Description": "Cà chua bi ngọt, giòn, canh tác hữu cơ trong nhà kính.",
+    "Origin": "Đà Lạt, Việt Nam",
+    "Certification": "VietGAP, GlobalGAP",
+    "ProductID": "f257938e-1398-4a53-9698-9cae7e11fed0",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7016"
+    },
+    "ProductName": "Bơ sáp Đắk Lắk",
+    "PathImage": "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=400",
+    "ProductType": "Trái cây",
+    "Quantity": 90,
+    "Unit": "kg",
+    "Price": 65000,
+    "Description": "Bơ sáp dẻo, thơm, giàu omega-3 và vitamin E.",
+    "Origin": "Đắk Lắk, Việt Nam",
+    "Certification": "VietGAP",
+    "ProductID": "04415b79-acb4-4fa2-ba02-26102f2ab943",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7017"
+    },
+    "ProductName": "Xoài cát Hoà Lộc",
+    "PathImage": "https://images.unsplash.com/photo-1553279768-865429fa0078?w=400",
+    "ProductType": "Trái cây",
+    "Quantity": 150,
+    "Unit": "kg",
+    "Price": 55000,
+    "Description": "Xoài cát Hòa Lộc đặc sản Tiền Giang, ngọt đậm, thơm.",
+    "Origin": "Tiền Giang, Việt Nam",
+    "Certification": "VietGAP, GlobalGAP",
+    "ProductID": "fbe5fd1d-f3ea-4d1d-9e1b-3080ab042881",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7018"
+    },
+    "ProductName": "Trứng gà ác hữu cơ",
+    "PathImage": "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400",
+    "ProductType": "Thực phẩm tươi",
+    "Quantity": 300,
+    "Unit": "vỉ 10 quả",
+    "Price": 55000,
+    "Description": "Trứng gà ác chăn thả tự nhiên, bổ dưỡng.",
+    "Origin": "Long An, Việt Nam",
+    "Certification": "VietGAP",
+    "ProductID": "03300522-60e2-4d78-a66f-cab6f902ec7f",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7019"
+    },
+    "ProductName": "Mật ong rừng U Minh",
+    "PathImage": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400",
+    "ProductType": "Thực phẩm khô",
+    "Quantity": 70,
+    "Unit": "chai 500ml",
+    "Price": 250000,
+    "Description": "Mật ong rừng nguyên chất, khai thác tự nhiên.",
+    "Origin": "Cà Mau, Việt Nam",
+    "Certification": "OCOP 4 sao",
+    "ProductID": "fba37eee-afd7-4dd9-ad7e-ca7a528d3d3a",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a701a"
+    },
+    "ProductName": "Hạt điều Bình Phước",
+    "PathImage": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400",
+    "ProductType": "Hạt dinh dưỡng",
+    "Quantity": 200,
+    "Unit": "kg",
+    "Price": 320000,
+    "Description": "Hạt điều rang muối, giòn, béo, nguồn gốc Bình Phước.",
+    "Origin": "Bình Phước, Việt Nam",
+    "Certification": "HACCP, ISO 22000",
+    "ProductID": "de5d4693-5e21-4058-a8b1-4f43bfe25489",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a701b"
+    },
+    "ProductName": "Trà sen Tây Hồ",
+    "PathImage": "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=400",
+    "ProductType": "Đồ uống",
+    "Quantity": 40,
+    "Unit": "hộp 100g",
+    "Price": 450000,
+    "Description": "Trà sen ướp thủ công từ hoa sen Tây Hồ đặc sản Hà Nội.",
+    "Origin": "Hà Nội, Việt Nam",
+    "Certification": "OCOP 5 sao",
+    "ProductID": "cdb5c4b6-5874-4401-9dd5-de88753c586a",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a701c"
+    },
+    "ProductName": "Nấm linh chi Đà Lạt",
+    "PathImage": "https://images.unsplash.com/photo-1607301406259-dfb186e15de8?w=400",
+    "ProductType": "Dược liệu",
+    "Quantity": 50,
+    "Unit": "kg",
+    "Price": 1200000,
+    "Description": "Nấm linh chi đỏ sấy khô, dược liệu quý.",
+    "Origin": "Lâm Đồng, Việt Nam",
+    "Certification": "GACP-WHO",
+    "ProductID": "e7ae8a07-6565-44cf-a6ec-0fb3f5bf76ba",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a701d"
+    },
+    "ProductName": "Nước mắm Phú Quốc",
+    "PathImage": "https://images.unsplash.com/photo-1599909533677-d52b8b0e7a3a?w=400",
+    "ProductType": "Gia vị",
+    "Quantity": 100,
+    "Unit": "chai 500ml",
+    "Price": 85000,
+    "Description": "Nước mắm cá cơm truyền thống Phú Quốc, độ đạm 40N.",
+    "Origin": "Kiên Giang, Việt Nam",
+    "Certification": "Chỉ dẫn địa lý EU",
+    "ProductID": "ed7d87cc-e869-4090-beb2-62188ef3ce4a",
+    "CreateDate": "2026-04-18T22:40:14.750030+00:00",
+    "UpdateDate": "2026-04-18T22:40:14.750030+00:00"
+  }
+]

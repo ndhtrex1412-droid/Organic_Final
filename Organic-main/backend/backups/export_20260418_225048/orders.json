@@ -1,0 +1,56 @@
+[
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a702b"
+    },
+    "user": "lan@test.com",
+    "full_name": "Nguyễn Thị Lan",
+    "phone": "0912345678",
+    "address": "12 Nguyễn Huệ",
+    "province": "Thành phố Hồ Chí Minh",
+    "district": "Quận 1",
+    "payment_method": "COD",
+    "notes": "Giao giờ hành chính",
+    "items": [
+      {
+        "product_id": "36e1d9c7-4378-4478-950f-733f3599af08",
+        "product_name": "Gạo ST25 hữu cơ",
+        "price": 85000,
+        "quantity": 2
+      }
+    ],
+    "total": 170000,
+    "status": "delivered",
+    "created_at": "2026-04-15T22:40:14.763228+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a702c"
+    },
+    "user": "nam@test.com",
+    "full_name": "Trần Văn Nam",
+    "phone": "0987654321",
+    "address": "56 Phố Huế",
+    "province": "Thành phố Hà Nội",
+    "district": "Quận Hai Bà Trưng",
+    "payment_method": "Chuyển khoản",
+    "notes": "",
+    "items": [
+      {
+        "product_id": "e574b457-9347-4cfd-adad-505fabf083d5",
+        "product_name": "Thanh long Bình Thuận",
+        "price": 45000,
+        "quantity": 3
+      },
+      {
+        "product_id": "2d8e6d29-c44a-4f14-8234-26370be8ced0",
+        "product_name": "Cà phê Đắk Lắk hữu cơ",
+        "price": 350000,
+        "quantity": 1
+      }
+    ],
+    "total": 485000,
+    "status": "processing",
+    "created_at": "2026-04-18T17:40:14.763235+00:00"
+  }
+]

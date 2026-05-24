@@ -1,0 +1,41 @@
+[
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a700c"
+    },
+    "full_name": "Nguyễn Thị Lan",
+    "email": "lan@test.com",
+    "phone": "0912345678",
+    "password": "$2b$12$D3KUeGBMuZofg6gOdOECkufufklXBq34Z.JYCCu9fWR9TwPgMRxuK",
+    "address": "12 Nguyễn Huệ",
+    "province": "Thành phố Hồ Chí Minh",
+    "district": "Quận 1",
+    "created_at": "2026-04-18T22:40:14.297806+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a700d"
+    },
+    "full_name": "Trần Văn Nam",
+    "email": "nam@test.com",
+    "phone": "0987654321",
+    "password": "$2b$12$1TWLQeLGLc0CLn2SfJ/wWODZ4qwHDR7RsfIr/8ckDhPjT6jPDZesO",
+    "address": "56 Phố Huế",
+    "province": "Thành phố Hà Nội",
+    "district": "Quận Hai Bà Trưng",
+    "created_at": "2026-04-18T22:40:14.523740+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a700e"
+    },
+    "full_name": "Lê Minh Hoa",
+    "email": "hoa@test.com",
+    "phone": "0901122334",
+    "password": "$2b$12$a.HnJRwqVDY8WnA0.VapVeO0dV3kglvCSWM41ok/.jsdC8IqqhhQa",
+    "address": "34 Bạch Đằng",
+    "province": "Thành phố Đà Nẵng",
+    "district": "Quận Hải Châu",
+    "created_at": "2026-04-18T22:40:14.748857+00:00"
+  }
+]

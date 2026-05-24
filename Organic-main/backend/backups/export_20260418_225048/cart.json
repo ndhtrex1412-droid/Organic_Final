@@ -1,0 +1,57 @@
+[
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a701e"
+    },
+    "user": "lan@test.com",
+    "product_id": "36e1d9c7-4378-4478-950f-733f3599af08",
+    "product_name": "Gạo ST25 hữu cơ",
+    "price": 85000,
+    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+    "quantity": 2
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a701f"
+    },
+    "user": "lan@test.com",
+    "product_id": "0ac38b9d-439c-49a5-849e-3c8622d447a5",
+    "product_name": "Rau muống hữu cơ",
+    "price": 25000,
+    "image": "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400",
+    "quantity": 1
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7020"
+    },
+    "user": "nam@test.com",
+    "product_id": "e574b457-9347-4cfd-adad-505fabf083d5",
+    "product_name": "Thanh long Bình Thuận",
+    "price": 45000,
+    "image": "https://images.unsplash.com/photo-1527325678964-54921661f888?w=400",
+    "quantity": 3
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7021"
+    },
+    "user": "nam@test.com",
+    "product_id": "2d8e6d29-c44a-4f14-8234-26370be8ced0",
+    "product_name": "Cà phê Đắk Lắk hữu cơ",
+    "price": 350000,
+    "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400",
+    "quantity": 1
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7022"
+    },
+    "user": "nam@test.com",
+    "product_id": "82b81744-54ab-4f31-a840-f47be285faae",
+    "product_name": "Măng cụt Lái Thiêu",
+    "price": 120000,
+    "image": "https://images.unsplash.com/photo-1591735090331-3e74a1ee4d24?w=400",
+    "quantity": 2
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7023"
+    },
+    "username": "admin68",
+    "user_message": "Rau muống có lợi gì cho sức khỏe?",
+    "ai_response": "Rau muống giàu vitamin A, C, sắt và chất xơ, giúp cải thiện tiêu hoá, thanh nhiệt, tốt cho mắt và hỗ trợ giảm cân.",
+    "timestamp": "2026-04-18T22:40:14.752029+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7024"
+    },
+    "username": "lan@test.com",
+    "user_message": "Gạo ST25 nấu sao ngon?",
+    "ai_response": "Bạn vo gạo nhẹ, ngâm 15 phút, tỉ lệ nước 1:1.2, nấu bằng nồi cơm điện chế độ trắng chuẩn là có cơm dẻo thơm.",
+    "timestamp": "2026-04-18T21:40:14.752035+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7025"
+    },
+    "username": "nam@test.com",
+    "user_message": "Thanh long ruột đỏ khác ruột trắng ra sao?",
+    "ai_response": "Thanh long ruột đỏ ngọt hơn, giàu betacyanin (chất chống oxy hoá) và vitamin C cao hơn loại ruột trắng khoảng 2 lần.",
+    "timestamp": "2026-04-18T20:40:14.752038+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7026"
+    },
+    "username": "admin68",
+    "user_message": "Cà phê hữu cơ khác cà phê thường thế nào?",
+    "ai_response": "Cà phê hữu cơ không dùng thuốc trừ sâu và phân hoá học, giữ được hương vị tự nhiên và an toàn cho sức khỏe người uống.",
+    "timestamp": "2026-04-18T19:40:14.752042+00:00"
+  },
+  {
+    "_id": {
+      "$oid": "69e4084e6e1a29250b9a7027"
+    },
+    "username": "hoa@test.com",
+    "user_message": "Bơ sáp chín dùng làm gì?",
+    "ai_response": "Bơ sáp có thể ăn trực tiếp, làm sinh tố, salad, kem bơ, bánh mì bơ. Giàu chất béo tốt và vitamin E cho da.",
+    "timestamp": "2026-04-18T18:40:14.752045+00:00"
+  }
+]
