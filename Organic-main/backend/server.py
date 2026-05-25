@@ -80,6 +80,11 @@ class UserResponse(BaseModel):
     full_name: str
     token: str
 
+class PasswordResetRequest(BaseModel):
+    email: str
+    phone: str
+    new_password: str
+
 class CartItem(BaseModel):
     product_id: str
     quantity: int
@@ -212,6 +217,19 @@ async def login_user(credentials: UserLogin):
     
     token = create_token(credentials.email)
     return UserResponse(email=credentials.email, full_name=user['full_name'], token=token)
+
+@api_router.post("/users/reset-password")
+async def reset_password(request: PasswordResetRequest):
+    user = await db.users.find_one({"email": request.email, "phone": request.phone})
+    if not user:
+        raise HTTPException(status_code=400, detail="Email hoặc số điện thoại không chính xác")
+    
+    hashed_password = bcrypt.hashpw(request.new_password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+    await db.users.update_one(
+        {"email": request.email},
+        {"$set": {"password": hashed_password}}
+    )
+    return {"message": "Cập nhật mật khẩu thành công"}
 
 @api_router.get("/auth/verify")
 async def verify(username: str = Depends(verify_token)):

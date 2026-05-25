@@ -80,14 +80,18 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
   return children;
 };
 
+const ITEMS_PER_PAGE = 8;
+
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [quantities, setQuantities] = useState({});
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [detailQty, setDetailQty] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const { token, isAdmin } = useAuth();
   const navigate = useNavigate();
+  const productGridRef = React.useRef(null);
 
   useEffect(() => {
     let alive = true;
@@ -147,6 +151,17 @@ const HomePage = () => {
     setDetailQty(1);
   };
 
+  const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+  const paginatedProducts = products.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const goToPage = (page) => {
+    setCurrentPage(page);
+    productGridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div className="min-h-screen bg-[#F8F9F6]">
       <nav className="bg-white border-b border-[#E3E8E0] sticky top-0 z-50">
@@ -177,37 +192,96 @@ const HomePage = () => {
       </nav>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <h1 className="text-4xl font-semibold text-[#1A2118] mb-2">Sản Phẩm Hữu Cơ Việt Nam</h1>
-        <p className="text-[#5C6656] mb-8">Tươi ngon, an toàn, đạt chuẩn VietGAP</p>
+        <div ref={productGridRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-8">
+          <div>
+            <h1 className="text-4xl font-semibold text-[#1A2118] mb-1">Sản Phẩm Hữu Cơ Việt Nam</h1>
+            <p className="text-[#5C6656]">Tươi ngon, an toàn, đạt chuẩn VietGAP</p>
+          </div>
+          {!loading && products.length > 0 && (
+            <p className="text-sm text-[#5C6656] shrink-0">
+              Hiển thị <span className="font-semibold text-[#1A2118]">{(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, products.length)}</span> / {products.length} sản phẩm
+            </p>
+          )}
+        </div>
 
         {loading ? (
           <div className="text-center py-12"><Loader2 className="animate-spin mx-auto" size={32} /></div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <Card key={product.ProductID} className="hover:shadow-lg transition-all group cursor-pointer" onClick={() => openDetail(product)}>
-                <div className="relative overflow-hidden rounded-t-xl">
-                  <img src={product.PathImage} alt={product.ProductName} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white text-[#2C5F2D] text-xs font-semibold px-3 py-1 rounded-full">Xem chi tiết</span>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {paginatedProducts.map((product) => (
+                <Card key={product.ProductID} className="hover:shadow-lg transition-all group cursor-pointer" onClick={() => openDetail(product)}>
+                  <div className="relative overflow-hidden rounded-t-xl">
+                    <img src={product.PathImage} alt={product.ProductName} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white text-[#2C5F2D] text-xs font-semibold px-3 py-1 rounded-full">Xem chi tiết</span>
+                    </div>
                   </div>
-                </div>
-                <CardContent className="p-4">
-                  <h3 className="font-semibold text-[#1A2118] mb-1 line-clamp-1">{product.ProductName}</h3>
-                  <p className="text-sm text-[#5C6656] mb-2">{product.ProductType}</p>
-                  <p className="text-lg font-bold text-[#2C5F2D] mb-3">{formatVND(product.Price)}</p>
-                  <div className="flex items-center gap-2 mb-3" onClick={e => e.stopPropagation()}>
-                    <Button size="sm" variant="outline" onClick={() => updateQty(product.ProductID, -1)} disabled={(quantities[product.ProductID] || 1) <= 1} className="h-8 w-8 p-0" data-testid={`qty-decrease-${product.ProductID}`}><Minus size={14} /></Button>
-                    <span className="w-8 text-center font-medium text-[#1A2118]" data-testid={`qty-display-${product.ProductID}`}>{quantities[product.ProductID] || 1}</span>
-                    <Button size="sm" variant="outline" onClick={() => updateQty(product.ProductID, 1)} className="h-8 w-8 p-0" data-testid={`qty-increase-${product.ProductID}`}><Plus size={14} /></Button>
-                  </div>
-                  <Button onClick={(e) => { e.stopPropagation(); addToCart(product.ProductID); }} className="w-full bg-[#2C5F2D] hover:bg-[#1E441F]" data-testid={`add-to-cart-${product.ProductID}`}>
-                    <ShoppingCart size={16} className="mr-2" />Thêm vào giỏ
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  <CardContent className="p-4">
+                    <h3 className="font-semibold text-[#1A2118] mb-1 line-clamp-1">{product.ProductName}</h3>
+                    <p className="text-sm text-[#5C6656] mb-2">{product.ProductType}</p>
+                    <p className="text-lg font-bold text-[#2C5F2D] mb-3">{formatVND(product.Price)}</p>
+                    <div className="flex items-center gap-2 mb-3" onClick={e => e.stopPropagation()}>
+                      <Button size="sm" variant="outline" onClick={() => updateQty(product.ProductID, -1)} disabled={(quantities[product.ProductID] || 1) <= 1} className="h-8 w-8 p-0" data-testid={`qty-decrease-${product.ProductID}`}><Minus size={14} /></Button>
+                      <span className="w-8 text-center font-medium text-[#1A2118]" data-testid={`qty-display-${product.ProductID}`}>{quantities[product.ProductID] || 1}</span>
+                      <Button size="sm" variant="outline" onClick={() => updateQty(product.ProductID, 1)} className="h-8 w-8 p-0" data-testid={`qty-increase-${product.ProductID}`}><Plus size={14} /></Button>
+                    </div>
+                    <Button onClick={(e) => { e.stopPropagation(); addToCart(product.ProductID); }} className="w-full bg-[#2C5F2D] hover:bg-[#1E441F]" data-testid={`add-to-cart-${product.ProductID}`}>
+                      <ShoppingCart size={16} className="mr-2" />Thêm vào giỏ
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="mt-10 flex items-center justify-center gap-2 flex-wrap">
+                <button
+                  onClick={() => goToPage(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="flex items-center gap-1 px-4 py-2 rounded-lg border border-[#E3E8E0] text-sm font-medium text-[#5C6656] hover:border-[#2C5F2D] hover:text-[#2C5F2D] disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                  data-testid="pagination-prev"
+                >
+                  <ChevronLeft size={16} />Trước
+                </button>
+
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => {
+                  const isActive = page === currentPage;
+                  const showPage = page === 1 || page === totalPages || Math.abs(page - currentPage) <= 1;
+                  const showEllipsisBefore = page === currentPage - 2 && page > 2;
+                  const showEllipsisAfter = page === currentPage + 2 && page < totalPages - 1;
+                  if (showEllipsisBefore || showEllipsisAfter) {
+                    return <span key={`ellipsis-${page}`} className="px-1 text-[#5C6656]">…</span>;
+                  }
+                  if (!showPage) return null;
+                  return (
+                    <button
+                      key={page}
+                      onClick={() => goToPage(page)}
+                      className={`w-10 h-10 rounded-lg text-sm font-semibold transition-all border ${
+                        isActive
+                          ? 'bg-[#2C5F2D] text-white border-[#2C5F2D] shadow-md scale-105'
+                          : 'border-[#E3E8E0] text-[#5C6656] hover:border-[#2C5F2D] hover:text-[#2C5F2D]'
+                      }`}
+                      data-testid={`pagination-page-${page}`}
+                    >
+                      {page}
+                    </button>
+                  );
+                })}
+
+                <button
+                  onClick={() => goToPage(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="flex items-center gap-1 px-4 py-2 rounded-lg border border-[#E3E8E0] text-sm font-medium text-[#5C6656] hover:border-[#2C5F2D] hover:text-[#2C5F2D] disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                  data-testid="pagination-next"
+                >
+                  Sau<ChevronRight size={16} />
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
 
@@ -369,6 +443,13 @@ const LoginPage = () => {
               </div>
               {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password}</p>}
             </div>
+            {!isAdminLogin && (
+              <div className="flex justify-end">
+                <Link to="/forgot-password" className="text-sm text-[#2C5F2D] hover:underline" data-testid="forgot-password-link">
+                  Quên mật khẩu?
+                </Link>
+              </div>
+            )}
             {errors.submit && <p className="text-sm text-red-500">{errors.submit}</p>}
             <Button type="submit" className="w-full bg-[#2C5F2D]" disabled={loading} data-testid="login-submit-button">
               {loading ? <Loader2 className="animate-spin" /> : 'Đăng Nhập'}
@@ -381,6 +462,117 @@ const LoginPage = () => {
             <p className="text-sm text-[#5C6656]">
               Chưa có tài khoản? <Link to="/register" className="text-[#2C5F2D] hover:underline">Đăng ký ngay</Link>
             </p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+const ForgotPasswordPage = () => {
+  const [formData, setFormData] = useState({ email: '', phone: '', newPassword: '', confirmPassword: '' });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.email) newErrors.email = 'Vui lòng nhập email';
+    if (!formData.phone) newErrors.phone = 'Vui lòng nhập số điện thoại';
+    if (!formData.newPassword) newErrors.newPassword = 'Vui lòng nhập mật khẩu mới';
+    else if (formData.newPassword.length < 6) newErrors.newPassword = 'Mật khẩu phải có ít nhất 6 ký tự';
+    if (formData.newPassword !== formData.confirmPassword) newErrors.confirmPassword = 'Mật khẩu xác nhận không khớp';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+    setLoading(true);
+    try {
+      await axios.post(`${API}/users/reset-password`, {
+        email: formData.email,
+        phone: formData.phone,
+        new_password: formData.newPassword
+      });
+      toast.success('Đổi mật khẩu thành công! Bạn có thể đăng nhập ngay bây giờ.');
+      navigate('/login');
+    } catch (error) {
+      setErrors({ submit: error.response?.data?.detail || 'Đổi mật khẩu thất bại' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#F8F9F6] flex items-center justify-center p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl">Quên Mật Khẩu</CardTitle>
+          <CardDescription>Xác minh danh tính để đặt lại mật khẩu</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4" data-testid="forgot-password-form">
+            <div>
+              <Label htmlFor="email">Email đã đăng ký</Label>
+              <Input
+                id="email"
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                className={`mt-1.5 ${errors.email ? 'border-red-500' : ''}`}
+                placeholder="Nhập email"
+                data-testid="forgot-password-email"
+              />
+              {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email}</p>}
+            </div>
+            <div>
+              <Label htmlFor="phone">Số điện thoại</Label>
+              <Input
+                id="phone"
+                value={formData.phone}
+                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                className={`mt-1.5 ${errors.phone ? 'border-red-500' : ''}`}
+                placeholder="Nhập số điện thoại"
+                data-testid="forgot-password-phone"
+              />
+              {errors.phone && <p className="text-sm text-red-500 mt-1">{errors.phone}</p>}
+            </div>
+            <div>
+              <Label htmlFor="newPassword">Mật khẩu mới</Label>
+              <Input
+                id="newPassword"
+                type="password"
+                value={formData.newPassword}
+                onChange={(e) => setFormData({...formData, newPassword: e.target.value})}
+                className={`mt-1.5 ${errors.newPassword ? 'border-red-500' : ''}`}
+                placeholder="Nhập mật khẩu mới"
+                data-testid="forgot-password-new"
+              />
+              {errors.newPassword && <p className="text-sm text-red-500 mt-1">{errors.newPassword}</p>}
+            </div>
+            <div>
+              <Label htmlFor="confirmPassword">Xác nhận mật khẩu mới</Label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                value={formData.confirmPassword}
+                onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
+                className={`mt-1.5 ${errors.confirmPassword ? 'border-red-500' : ''}`}
+                placeholder="Nhập lại mật khẩu mới"
+                data-testid="forgot-password-confirm"
+              />
+              {errors.confirmPassword && <p className="text-sm text-red-500 mt-1">{errors.confirmPassword}</p>}
+            </div>
+            {errors.submit && <p className="text-sm text-red-500">{errors.submit}</p>}
+            <Button type="submit" className="w-full bg-[#2C5F2D]" disabled={loading}>
+              {loading ? <Loader2 className="animate-spin" /> : 'Đặt Lại Mật Khẩu'}
+            </Button>
+          </form>
+          <div className="mt-4 text-center">
+            <Link to="/login" className="text-sm text-[#2C5F2D] hover:underline">
+              Quay lại Đăng nhập
+            </Link>
           </div>
         </CardContent>
       </Card>
@@ -682,7 +874,7 @@ const CartPage = () => {
 const CheckoutPage = () => {
   const [formData, setFormData] = useState({
     full_name: '', phone: '', address: '', province: '', district: '',
-    payment_method: 'cod', notes: ''
+    detail_address: '', payment_method: 'cod', notes: ''
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -716,6 +908,7 @@ const CheckoutPage = () => {
     if (!formData.address) newErrors.address = 'Vui lòng nhập địa chỉ giao hàng';
     if (!formData.province) newErrors.province = 'Vui lòng chọn tỉnh/thành phố';
     if (!formData.district) newErrors.district = 'Vui lòng nhập quận/huyện';
+    if (!formData.detail_address) newErrors.detail_address = 'Vui lòng nhập địa chỉ chi tiết';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -725,7 +918,13 @@ const CheckoutPage = () => {
     if (!validate()) return;
     setLoading(true);
     try {
-      await axios.post(`${API}/checkout`, formData, { headers: { Authorization: `Bearer ${token}` } });
+      const submitData = {
+        ...formData,
+        address: `${formData.address}, ${formData.detail_address}`
+      };
+      delete submitData.detail_address;
+
+      await axios.post(`${API}/checkout`, submitData, { headers: { Authorization: `Bearer ${token}` } });
       toast.success('Đặt hàng thành công! Cảm ơn bạn đã mua hàng.');
       navigate('/');
     } catch (error) {
@@ -777,6 +976,11 @@ const CheckoutPage = () => {
                   <Label htmlFor="district">Quận/Huyện <span className="text-red-500">*</span></Label>
                   <Input id="district" value={formData.district} onChange={(e) => setFormData({...formData, district: e.target.value})} className={`mt-1.5 ${errors.district ? 'border-red-500' : ''}`} placeholder="Quận 1" data-testid="checkout-district-input" />
                   {errors.district && <p className="text-sm text-red-500 mt-1">{errors.district}</p>}
+                </div>
+                <div className="md:col-span-2">
+                  <Label htmlFor="detail_address">Địa chỉ chi tiết (Số nhà, tên đường...) <span className="text-red-500">*</span></Label>
+                  <Input id="detail_address" value={formData.detail_address} onChange={(e) => setFormData({...formData, detail_address: e.target.value})} className={`mt-1.5 ${errors.detail_address ? 'border-red-500' : ''}`} placeholder="Số 12, ngõ 34, đường ABC..." data-testid="checkout-detail-address-input" />
+                  {errors.detail_address && <p className="text-sm text-red-500 mt-1">{errors.detail_address}</p>}
                 </div>
                 <div className="md:col-span-2">
                   <Label htmlFor="payment_method">Phương thức thanh toán</Label>
@@ -1300,6 +1504,173 @@ const ChatPage = () => {
   );
 };
 
+const OcrMatchedProducts = ({ products, token, navigate }) => {
+  const [quantities, setQuantities] = useState(() => {
+    const init = {};
+    products.forEach(p => { init[p.ProductID] = 1; });
+    return init;
+  });
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [detailQty, setDetailQty] = useState(1);
+
+  const updateQty = (productId, delta) => {
+    setQuantities(prev => ({
+      ...prev,
+      [productId]: Math.max(1, (prev[productId] || 1) + delta)
+    }));
+  };
+
+  const addToCart = async (productId, qty) => {
+    if (!token) {
+      toast.error('Vui lòng đăng nhập để mua hàng');
+      navigate('/login');
+      return;
+    }
+    try {
+      await axios.post(`${API}/cart/add`, { product_id: productId, quantity: qty || quantities[productId] || 1 }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      toast.success(`Đã thêm ${qty || quantities[productId] || 1} sản phẩm vào giỏ hàng`);
+      setQuantities(prev => ({ ...prev, [productId]: 1 }));
+    } catch (error) {
+      toast.error('Không thể thêm vào giỏ hàng');
+    }
+  };
+
+  const openDetail = (product) => {
+    setSelectedProduct(product);
+    setDetailQty(1);
+  };
+
+  return (
+    <>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Sản phẩm liên quan trong cửa hàng</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {products.map(p => (
+              <div
+                key={p.ProductID}
+                className="flex flex-col rounded-xl border border-[#E3E8E0] overflow-hidden hover:border-[#2C5F2D] hover:shadow-md transition-all group"
+                data-testid={`ocr-product-${p.ProductID}`}
+              >
+                <div
+                  className="flex items-center gap-4 p-3 cursor-pointer"
+                  onClick={() => openDetail(p)}
+                >
+                  <div className="relative w-20 h-20 shrink-0">
+                    <img src={p.PathImage} alt={p.ProductName} className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300" />
+                    <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="bg-white/80 text-[#2C5F2D] text-[10px] font-bold px-2 py-0.5 rounded-full">Chi tiết</span>
+                    </span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-semibold text-[#1A2118] truncate">{p.ProductName}</h4>
+                    <p className="text-xs text-[#5C6656]">{p.ProductType}</p>
+                    <p className="text-[#2C5F2D] font-bold text-sm mt-0.5">{formatVND(p.Price)}</p>
+                    {p.Origin && <p className="text-xs text-[#5C6656] mt-0.5">🌍 {p.Origin}</p>}
+                  </div>
+                </div>
+                <div className="border-t border-[#E3E8E0] px-3 py-2 flex items-center gap-2 bg-[#F8F9F6]">
+                  <div className="flex items-center gap-1">
+                    <Button
+                      size="sm" variant="outline"
+                      className="h-7 w-7 p-0"
+                      onClick={() => updateQty(p.ProductID, -1)}
+                      disabled={(quantities[p.ProductID] || 1) <= 1}
+                      data-testid={`ocr-qty-decrease-${p.ProductID}`}
+                    ><Minus size={12} /></Button>
+                    <span className="w-7 text-center text-sm font-medium text-[#1A2118]" data-testid={`ocr-qty-${p.ProductID}`}>{quantities[p.ProductID] || 1}</span>
+                    <Button
+                      size="sm" variant="outline"
+                      className="h-7 w-7 p-0"
+                      onClick={() => updateQty(p.ProductID, 1)}
+                      data-testid={`ocr-qty-increase-${p.ProductID}`}
+                    ><Plus size={12} /></Button>
+                  </div>
+                  <Button
+                    size="sm"
+                    className="flex-1 bg-[#2C5F2D] hover:bg-[#1E441F] h-8 text-xs"
+                    onClick={() => addToCart(p.ProductID)}
+                    data-testid={`ocr-add-to-cart-${p.ProductID}`}
+                  >
+                    <ShoppingCart size={13} className="mr-1.5" />
+                    Thêm vào giỏ
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      <Dialog open={!!selectedProduct} onOpenChange={(open) => !open && setSelectedProduct(null)}>
+        <DialogContent className="max-w-3xl p-0 overflow-hidden">
+          {selectedProduct && (
+            <div className="flex flex-col md:flex-row">
+              <div className="md:w-2/5 relative">
+                <img src={selectedProduct.PathImage} alt={selectedProduct.ProductName} className="w-full h-64 md:h-full object-cover" />
+                <span className="absolute top-3 left-3 bg-[#2C5F2D] text-white text-xs font-bold px-3 py-1 rounded-full">{selectedProduct.ProductType}</span>
+              </div>
+              <div className="md:w-3/5 p-6 flex flex-col gap-4 overflow-y-auto max-h-[80vh]">
+                <div>
+                  <h2 className="text-2xl font-bold text-[#1A2118] mb-1">{selectedProduct.ProductName}</h2>
+                  <p className="text-2xl font-bold text-[#2C5F2D]">{formatVND(selectedProduct.Price)}<span className="text-sm font-normal text-[#5C6656] ml-1">/ {selectedProduct.Unit}</span></p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  {selectedProduct.Origin && (
+                    <div className="bg-[#F0F4EE] rounded-lg p-3">
+                      <p className="text-[#5C6656] text-xs mb-1">Xuất xứ</p>
+                      <p className="font-semibold text-[#1A2118]">{selectedProduct.Origin}</p>
+                    </div>
+                  )}
+                  <div className="bg-[#F0F4EE] rounded-lg p-3">
+                    <p className="text-[#5C6656] text-xs mb-1">Số lượng còn</p>
+                    <p className="font-semibold text-[#1A2118]">{selectedProduct.Quantity} {selectedProduct.Unit}</p>
+                  </div>
+                  {selectedProduct.Certification && (
+                    <div className="bg-green-50 rounded-lg p-3 col-span-2">
+                      <p className="text-[#5C6656] text-xs mb-1">✅ Chứng nhận</p>
+                      <p className="font-semibold text-[#2C5F2D]">{selectedProduct.Certification}</p>
+                    </div>
+                  )}
+                </div>
+
+                {selectedProduct.Description && (
+                  <div>
+                    <p className="text-sm font-semibold text-[#1A2118] mb-1">Mô tả sản phẩm</p>
+                    <p className="text-sm text-[#5C6656] leading-relaxed">{selectedProduct.Description}</p>
+                  </div>
+                )}
+
+                <div className="mt-auto pt-4 border-t border-gray-100">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-sm font-medium text-[#1A2118]">Số lượng:</span>
+                    <Button size="sm" variant="outline" onClick={() => setDetailQty(q => Math.max(1, q - 1))} className="h-9 w-9 p-0"><Minus size={14} /></Button>
+                    <span className="w-10 text-center font-bold text-lg">{detailQty}</span>
+                    <Button size="sm" variant="outline" onClick={() => setDetailQty(q => q + 1)} className="h-9 w-9 p-0"><Plus size={14} /></Button>
+                  </div>
+                  <Button
+                    className="w-full bg-[#2C5F2D] hover:bg-[#1E441F] h-12 text-base font-semibold"
+                    onClick={() => { addToCart(selectedProduct.ProductID, detailQty); setSelectedProduct(null); }}
+                    data-testid="ocr-detail-add-to-cart"
+                  >
+                    <ShoppingCart size={18} className="mr-2" />
+                    Thêm {detailQty} vào giỏ hàng &mdash; {formatVND(selectedProduct.Price * detailQty)}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+};
+
 const ImageSearchPage = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [imageBase64, setImageBase64] = useState('');
@@ -1416,25 +1787,7 @@ const ImageSearchPage = () => {
             </Card>
 
             {result.matched_products && result.matched_products.length > 0 && (
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Sản phẩm liên quan trong cửa hàng</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {result.matched_products.map(p => (
-                      <div key={p.ProductID} className="flex items-center gap-4 p-3 rounded-lg border border-[#E3E8E0] hover:border-[#2C5F2D] transition-colors">
-                        <img src={p.PathImage} alt={p.ProductName} className="w-16 h-16 object-cover rounded-lg" />
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-[#1A2118]">{p.ProductName}</h4>
-                          <p className="text-sm text-[#5C6656]">{p.ProductType}</p>
-                          <p className="text-[#2C5F2D] font-bold">{formatVND(p.Price)}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              <OcrMatchedProducts products={result.matched_products} token={token} navigate={navigate} />
             )}
           </div>
         )}
@@ -2564,6 +2917,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
